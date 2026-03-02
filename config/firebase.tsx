@@ -1,3 +1,4 @@
+// firebase.tsx
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -9,13 +10,16 @@ const firebaseConfig = {
   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL!,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
-  messagingSenderId:
-  process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+let app: ReturnType<typeof initializeApp> | undefined;
 
-export const auth = getAuth(app);
-export const firestore = getFirestore(app);
-export const database = getDatabase(app);
+if (typeof window !== "undefined") {
+  app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+}
+
+export const auth = app ? getAuth(app) : null;
+export const firestore = app ? getFirestore(app) : null;
+export const database = app ? getDatabase(app) : null;
