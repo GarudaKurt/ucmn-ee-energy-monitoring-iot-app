@@ -4,15 +4,15 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL!,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
-  messagingSenderId:
-    process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
+  apiKey: "AIzaSyDwhKHNyxcsdu252xfl4jefdvG_GKgJV6o",
+  authDomain: "ucmn-ee-5d7f9.firebaseapp.com",
+  databaseURL: "https://ucmn-ee-5d7f9-default-rtdb.firebaseio.com",
+  projectId: "ucmn-ee-5d7f9",
+  storageBucket: "ucmn-ee-5d7f9.firebasestorage.app",
+  messagingSenderId: "34959562854",
+  appId: "1:34959562854:web:83d0719315e9281f85f5a7"
 };
+
 
 // Prevent re-initialization (VERY IMPORTANT for Next.js)
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
